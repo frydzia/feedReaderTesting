@@ -31,6 +31,14 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+         it('has URL', function() {
+           for (var feed of allFeeds) {
+             expect(feed.url).toBeDefined();
+             expect(feed).not.toEqual(jasmine.objectContaining({
+               url: ''
+             }));
+           };
+         });
 
 
         /* TODO: Write a test that loops through each feed

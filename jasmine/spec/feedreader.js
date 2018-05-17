@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('has URL', function() {
+         it('have URL', function() {
            for (var feed of allFeeds) {
              expect(feed.url).toBeDefined();
              expect(feed).not.toEqual(jasmine.objectContaining({
@@ -45,7 +45,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-         it('has a name', function() {
+         it('have a name defined and name is not empty', function() {
            for (var feed of allFeeds) {
              expect(feed.name).toBeDefined();
              expect(feed).not.toEqual(jasmine.objectContaining({
@@ -67,6 +67,7 @@ $(function() {
 
          var menuIcon = document.querySelector('.menu-icon-link');
          var body = document.querySelector('body');
+
          it('should be hidden by default', function() {
            expect(body.classList.contains('menu-hidden')).toBe(true);
          });
@@ -77,7 +78,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-          it('changes visibility when the menu icon is clicked', function() {
+          it('should changes visibility when the menu icon is clicked', function() {
            menuIcon.click();
            expect(body.classList.contains('menu-hidden')).not.toBe(true);
 
@@ -88,6 +89,7 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -96,10 +98,28 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+
+         beforeEach(function(done) {
+           loadFeed(0, function() {
+             done();
+           });
+         });
+
+         it('has at least 1 entry after loadFeed function is called', function(done) {
+           var numberOfEntries = document.querySelector('.feed').getElementsByClassName('entry').length;
+
+           expect(numberOfEntries).toBeGreaterThan(0);
+           done();
+         });
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         
+    });
 }());

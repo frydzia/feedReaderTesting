@@ -65,11 +65,10 @@ $(function() {
          * hiding/showing of the menu element.
          */
 
-//         var menuIcon = document.querySelector('.menu-icon-link');
+         var menuIcon = document.querySelector('.menu-icon-link');
          var body = document.querySelector('body');
          it('should be hidden by default', function() {
-//          menuIcon.clicked === false;
-          expect(body.classList.contains('menu-hidden')).toBe(true);
+           expect(body.classList.contains('menu-hidden')).toBe(true);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -78,7 +77,13 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-          
+          it('changes visibility when the menu icon is clicked', function() {
+           menuIcon.click();
+           expect(body.classList.contains('menu-hidden')).not.toBe(true);
+
+           menuIcon.click();
+           expect(body.classList.contains('menu-hidden')).toBe(true);
+          });
 
     });
 
